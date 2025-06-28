@@ -1,6 +1,9 @@
-
 const STORAGE_KEY = 'BOOKSHELF_APPS';
 let books = [];
+let editingBookId = null;
+
+let incompleteTitle;
+let completeTitle;
 
 function loadBooks() {
   const data = localStorage.getItem(STORAGE_KEY);
@@ -207,6 +210,8 @@ function resetFormIfNotEditing() {
 }
 
 window.addEventListener('DOMContentLoaded', () => {
+  incompleteTitle = document.querySelector('section:nth-of-type(3) h2');
+  completeTitle = document.querySelector('section:nth-of-type(4) h2');
   loadBooks();
   renderBooks();
   document.getElementById('bookForm').addEventListener('submit', handleAddBook);
